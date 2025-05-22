@@ -1,0 +1,19 @@
+.certificate-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #854ce6;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  margin-top: 15px;
+}
+
+.certificate-btn:hover {
+  background-color: #6c3cd1;
+  transform: translateY(-2px);
+} 

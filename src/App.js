@@ -43,24 +43,24 @@ function App() {
       <Router>
         <Navbar />
         <Body>
-          <Hero />
-          <Wrapper>
-            <Skills />
-            <Experience />
-          </Wrapper>
-          <Projects openModal={openModal} setOpenModal={setOpenModal} />
-          <Wrapper>
-            <Education />
-            <Contact />
-          </Wrapper>
-          <Footer />
+              <Hero />
+              <Wrapper>
+                <Skills />
+                <Experience />
+              </Wrapper>
+              <Projects openModal={openModal} setOpenModal={setOpenModal} />
+              <Wrapper>
+                <Education />
+                <Contact />
+              </Wrapper>
+              <Footer />
 
-          {openModal.state && (
-            <ProjectDetails
-              openModal={openModal}
-              setOpenModal={setOpenModal}
-            />
-          )}
+              {openModal.state && (
+                <ProjectDetails
+                  openModal={openModal}
+                  setOpenModal={setOpenModal}
+                />
+              )}
         </Body>
       </Router>
     </ThemeProvider>

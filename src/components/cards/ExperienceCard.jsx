@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { VerticalTimelineElement } from "react-vertical-timeline-component";
+import "react-vertical-timeline-component/style.min.css";
 
 const Top = styled.div`
   width: 100%;
@@ -94,27 +95,49 @@ const ItemWrapper = styled.div`
   gap: 8px;
 `;
 
+const ProofButton = styled.a`
+  width: 100%;
+  text-decoration: none;
+  text-align: center;
+  background: hsla(271, 100%, 50%, 1);
+  background: linear-gradient(
+    225deg,
+    hsla(271, 100%, 50%, 1) 0%,
+    hsla(294, 100%, 50%, 1) 100%
+  );
+  background: -moz-linear-gradient(
+    225deg,
+    hsla(271, 100%, 50%, 1) 0%,
+    hsla(294, 100%, 50%, 1) 100%
+  );
+  background: -webkit-linear-gradient(
+    225deg,
+    hsla(271, 100%, 50%, 1) 0%,
+    hsla(294, 100%, 50%, 1) 100%
+  );
+  padding: 13px 16px;
+  margin-top: 12px;
+  border-radius: 12px;
+  border: none;
+  color: ${({ theme }) => theme.text_primary};
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  &:hover {
+    transform: scale(1.05);
+    transition: all 0.4s ease-in-out;
+    box-shadow: 20px 20px 60px #1F2634;
+    filter: brightness(1);
+  }
+`;
+
 const ExperienceCard = ({ experience }) => {
   return (
     <VerticalTimelineElement
-      icon={
-        <img
-          width="100%"
-          height="100%"
-          alt={experience.school}
-          style={{ borderRadius: "50%", objectFit: "cover" }}
-          src={experience.img}
-        />
-      }
       contentStyle={{
-        display: "flex",
-        flexDirection: "column",
-        gap: "12px",
         background: "#1d1836",
         color: "#fff",
-        boxShadow: "rgba(23, 92, 230, 0.15) 0px 4px 24px",
-        // backdropFilter: "blur(3px) saturate(106%)",
-        backgroundColor: "rgba(17, 25, 40, 0.83)",
+        boxShadow: "rgba(0, 0, 0, 0.1) 0px 4px 12px",
         border: "1px solid rgba(255, 255, 255, 0.125)",
         borderRadius: "6px",
       }}
@@ -122,6 +145,18 @@ const ExperienceCard = ({ experience }) => {
         borderRight: "7px solid  rgba(255, 255, 255, 0.3)",
       }}
       date={experience.date}
+      iconStyle={{
+        background: experience.img,
+      }}
+      icon={
+        <img
+          width="100%"
+          height="100%"
+          alt={experience.company}
+          style={{ borderRadius: "50%", objectFit: "cover" }}
+          src={experience.img}
+        />
+      }
     >
       <Top>
         <Image src={experience.img} />
@@ -140,13 +175,18 @@ const ExperienceCard = ({ experience }) => {
               <b>Skills:</b>
               <ItemWrapper>
                 {experience?.skills?.map((skill, index) => (
-                  <Skill>• {skill}</Skill>
+                  <Skill key={index}>• {skill}</Skill>
                 ))}
               </ItemWrapper>
             </Skills>
           </>
         )}
       </Description>
+      {experience?.doc && (
+        <ProofButton href={experience.doc} target="_blank" rel="noopener noreferrer">
+          Proof
+        </ProofButton>
+      )}
     </VerticalTimelineElement>
   );
 };

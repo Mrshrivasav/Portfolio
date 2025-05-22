@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { Bio } from "../../data/constants";
 import Typewriter from "typewriter-effect";
-import HeroImg from "../../images/HeroImage.jpg";
 import HeroBgAnimation from "../HeroBgAnimation";
 import { Tilt } from "react-tilt";
 import { motion } from "framer-motion";
@@ -180,13 +179,13 @@ const Img = styled.img`
   border-radius: 50%;
   width: 100%;
   height: 100%;
-  max-width: 400px;
-  max-height: 400px;
+  max-width: 600px;
+  max-height: 600px;
   border: 2px solid ${({ theme }) => theme.primary};
 
   @media (max-width: 640px) {
-    max-width: 280px;
-    max-height: 280px;
+    max-width: 420px;
+    max-height: 420px;
   }
 `;
 
@@ -221,8 +220,8 @@ const Hero = () => {
         <HeroBg>
           <HeroBgAnimation />
         </HeroBg>
-        <HeroInnerContainer>
-          <HeroLeftContainer>
+          <HeroInnerContainer>
+            <HeroLeftContainer>
             <motion.div
               {...headContainerAnimation}
             >
@@ -232,32 +231,32 @@ const Hero = () => {
                   {Bio.name}
                 </Title>
               </motion.div>
-              <TextLoop>
-                I am a
-                <Span>
-                  <Typewriter
-                    options={{
-                      strings: Bio.roles,
-                      autoStart: true,
-                      loop: true,
-                    }}
-                  />
-                </Span>
-              </TextLoop>
-              <SubTitle>{Bio.description}</SubTitle>
+                <TextLoop>
+                  I am a
+                  <Span>
+                    <Typewriter
+                      options={{
+                        strings: Bio.roles,
+                        autoStart: true,
+                        loop: true,
+                      }}
+                    />
+                  </Span>
+                </TextLoop>
+                <SubTitle>{Bio.description}</SubTitle>
               <ResumeButton href={Bio.resume} target="display">
                 Check Resume
               </ResumeButton>
             </motion.div>
-          </HeroLeftContainer>
-          <HeroRightContainer>
-            <motion.div {...headContentAnimation}>
-              <Tilt>
-                <Img src={HeroImg} alt="hero-image" />
-              </Tilt>
-            </motion.div>
-          </HeroRightContainer>
-        </HeroInnerContainer>
+            </HeroLeftContainer>
+            <HeroRightContainer>
+              <motion.div {...headContentAnimation}>
+                <Tilt>
+                <Img src={"/HeroImage.jpg"} alt="hero-image" />
+                </Tilt>
+              </motion.div>
+            </HeroRightContainer>
+          </HeroInnerContainer>
       </HeroContainer>
     </div>
   );
